@@ -1,17 +1,31 @@
-console.log(tempData);
+const seccionDePeliculas = document.getElementById('containerDePeliculas')
 
-    function createPeliculas(peliculas) {
-    const {title, year, director, duration, genre, rate, poster} = peliculas
-    const a = document.createElement("a")
-
+const getPelis = (data) =>{
+    console.log(data);
+    data.forEach(renderizadoDePeliculas)
 }
 
-function cargarPeliculas() {
-    const contenedor= document.getElementById("container")
-    contenedor.innerHTML ="";
-    const pelciulass = tempData[0];
-    const peliculas = pelciulass.map((peli)=>createPeliculas(peli));
-    return peliculas
-    peliculas.forEach((pelicula) =>  contenedor.appendChild(pelicula) );
+$.get(`https://students-api.2.us-1.fl0.io/movies`, getPelis)
+
+function renderizadoDePeliculas (pelicula) {
+
+    const peliculas = document.createElement('article')
+    peliculas.classList.add("peliculas")
+
+    const ContenedorPeliculas= document.createElement('div')
+    ContenedorPeliculas.classList.add("conPeli")
+
+
+    peliculas.innerHTML = `<img src="${pelicula.poster}" alt="${pelicula.title}">`
+
+    ContenedorPeliculas.innerHTML = ` 
+    <h4>${pelicula.title} (${pelicula.year})</h4> 
+    <p> Director: ${pelicula.director}</p>
+    <p> Duracion: ${pelicula.duration}</p>
+    <p> Genero: ${pelicula.genre.join(", ")}</p>
+    <p class="calificacion"> Rate: ${pelicula.rate}</p>
+    `
+    seccionDePeliculas.appendChild(peliculas)
+    peliculas.appendChild(ContenedorPeliculas)
+
 }
-console.log(cargarPeliculas());
