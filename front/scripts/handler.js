@@ -4,11 +4,13 @@ const axios = require("axios");
 const getPeliculas = async()=>{
 
     try {
-        const promesa = await axios.get("https://students-api.up.railway.app/movies")
-        console.log(promesa.data);
-        promesa.data.forEach(renderizadoDePeliculas)
+        const {data} = await axios.get("http://localhost:3000/movies")
+        console.log(data);
+        data.forEach(renderizadoDePeliculas)
     } catch (error) {
-        console.log("no carga la pagina", error);
+        console.log("no carga la pagina:", error.message);
     }
 }
+
+
 module.exports = getPeliculas; 
