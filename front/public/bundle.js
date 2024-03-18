@@ -15,7 +15,7 @@
   \****************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const renderizadoDePeliculas = __webpack_require__(/*! ./renderPelis */ \"./scripts/renderPelis.js\")\r\nconst axios = __webpack_require__(/*! axios */ \"./node_modules/axios/dist/browser/axios.cjs\");\r\n\r\nconst getPeliculas = async()=>{\r\n\r\n    try {\r\n        const {data} = await axios.get(\"http://localhost:3000/movies\")\r\n        console.log(data);\r\n        data.forEach(renderizadoDePeliculas)\r\n    } catch (error) {\r\n        console.log(\"no carga la pagina:\", error.message);\r\n    }\r\n}\r\n\r\n\r\nmodule.exports = getPeliculas; \n\n//# sourceURL=webpack://front/./scripts/handler.js?");
+eval("const renderizadoDePeliculas = __webpack_require__(/*! ./renderPelis */ \"./scripts/renderPelis.js\")\r\nconst axios = __webpack_require__(/*! axios */ \"./node_modules/axios/dist/browser/axios.cjs\");\r\n\r\nconst getPeliculas = async()=>{\r\n\r\n    try {\r\n        const {data} = await axios.get(\"http://localhost:3000/movies\")\r\n        data.forEach(renderizadoDePeliculas)\r\n    } catch (error) {\r\n        console.log(\"no carga la pagina:\", error.message);\r\n    }\r\n}\r\n\r\n\r\nmodule.exports = getPeliculas; \n\n//# sourceURL=webpack://front/./scripts/handler.js?");
 
 /***/ }),
 

@@ -47,3 +47,18 @@ body{
     width: 100%;
     border-radius: 10px;
 }
+
+#formPelis{
+    background-color: rgba(20, 19, 19, 0.81);
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 10px rgb(71, 68, 68 , 0.51);
+}
+
+.titleForm{
+    text-align: center;
+}
+
+.titleForm h1{
+    padding-top: 60px;
+    margin-top: 10px;
+}

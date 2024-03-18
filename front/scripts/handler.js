@@ -5,7 +5,6 @@ const getPeliculas = async()=>{
 
     try {
         const {data} = await axios.get("http://localhost:3000/movies")
-        console.log(data);
         data.forEach(renderizadoDePeliculas)
     } catch (error) {
         console.log("no carga la pagina:", error.message);

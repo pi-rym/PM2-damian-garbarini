@@ -21,72 +21,103 @@
                         <div class="navbar-nav">
                             <a class="nav-link active" style="color: #e3f2fd" aria-current="page" href="../index.html">Inicio</a>
                             <a class="nav-link" style="color: #e3f2fd" href="./about.html">About</a>
-                            <a class="nav-link"  style="color: #e3f2fd" href="./Update.html">Update</a>
+                            <a class="nav-link"  style="color: #e3f2fd" href="./update.html">Update</a>
                             <a class="nav-link disabled"  style="color: #e3f2fd; opacity:0.5 ;"  aria-disabled="true">Tu pagina favorita para tus pelis favorita</a>
                         </div>
                     </div>
                 </div>
             </nav>
-        <h1>Update</h1>
-
-        <form action="">
-
-        </form>
-
         </header>
 
-        <main> 
-            <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingInputDisabled" placeholder="name@example.com" disabled>
-                <label for="floatingInputDisabled">Email address</label>
-                <form class="row g-3">
-                    <div class="col-md-6">
-                      <label for="inputEmail4" class="form-label">Email</label>
-                      <input type="email" class="form-control" id="inputEmail4">
-                    </div>
-                    <div class="col-md-6">
-                      <label for="inputPassword4" class="form-label">Password</label>
-                      <input type="password" class="form-control" id="inputPassword4">
-                    </div>
-                    <div class="col-12">
-                      <label for="inputAddress" class="form-label">Address</label>
-                      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                    </div>
-                    <div class="col-12">
-                      <label for="inputAddress2" class="form-label">Address 2</label>
-                      <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-                    </div>
-                    <div class="col-md-6">
-                      <label for="inputCity" class="form-label">City</label>
-                      <input type="text" class="form-control" id="inputCity">
-                    </div>
-                    <div class="col-md-4">
-                      <label for="inputState" class="form-label">State</label>
-                      <select id="inputState" class="form-select">
-                        <option selected>Choose...</option>
-                        <option>...</option>
-                      </select>
-                    </div>
-                    <div class="col-md-2">
-                      <label for="inputZip" class="form-label">Zip</label>
-                      <input type="text" class="form-control" id="inputZip">
-                    </div>
-                    <div class="col-12">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="gridCheck">
-                        <label class="form-check-label" for="gridCheck">
-                          Check me out
-                        </label>
-                      </div>
-                    </div>
-                    <div class="col-12">
-                      <button type="submit" class="btn btn-primary">Sign in</button>
-                    </div>
-                  </form>
 
+        <main class="container" id="formPelis">
+          <div class="col mt-5 titleForm" >
+            <h1>Agrega una pelicula</h1>
+          </div>
+
+          <form class="row g-4 m-4">
+            <div class="col-12">
+              <label for="title" class="form-label">Titulo</label>
+              <input type="text" class="form-control" id="title" placeholder="Titulo de la pelicula">
+            </div>
+
+            <div class="col">
+              <label for="Director" class="form-label">Director</label>
+              <input type="text" class="form-control" id="Director" placeholder="Director de la pelicula">
+            </div>
+
+            <div class="col">
+              <label for="year" class="form-label">Año</label>
+              <input type="text" class="form-control" id="year" placeholder="Año de la pelicula">
+            </div>
+
+            <div class="col">
+              <label for="duration" class="form-label">Duración</label>
+              <input type="text"" class="form-control" id="duration" placeholder="Duración de la pelicula">
+            </div>
+
+            <div class="col-12" id="generos">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" value="" id="accion">
+                <label class="form-check-label" for="accion">
+                  Accion
+                </label>
+              </div> <!-- GENEROS -->
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" value="" id="aventura">
+                <label class="form-check-label" for="aventura">
+                  Aventura
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" value="" id="comedia">
+                <label class="form-check-label" for="comedia">
+                  Comedia
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" value="" id="fantasia">
+                <label class="form-check-label" for="fantasia">
+                  Fantasia
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" value="" id="drama">
+                <label class="form-check-label" for="drama">
+                  Drama
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" value="" id="ciencia ficcion">
+                <label class="form-check-label" for="ciencia ficcion">
+                  Ciencia Ficción
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" value="" id="documentales">
+                <label class="form-check-label" for="documentales">
+                  Documentales
+                </label>
+              </div>
+            </div>
+            
+            <div class="col-12">
+              <label for="rate" class="form-label">Calificación</label>
+              <input type="text" class="form-control" id="rate" placeholder="Calificación de la pelicula">
+            </div>
+
+            <div class="col-12">
+              <label for="poster" class="form-label">Poster</label>
+              <input type="url" class="form-control" id="poster" placeholder="Poster de la pelicula">
+            </div>
+            <div class="col-6">
+              <button type="button" id="enviar" class="btn btn-success col-12 mb-5 mt-4">Enviar Pelicula</button>
+            </div>
+            <div class="col-6">
+              <button type="button" class="btn btn-danger col-12 mb-5 mt-4 ">Limpiar Formulario</button>
+            </div>
+          </form>
         </main>
-
-
 
 
 
