@@ -1,58 +1,78 @@
 const axios = require("axios")
+class Movies {
+    constructor(title, year, director, duration, genre, rate, poster) {
+        this.title = title,
+        this.year = year,
+        this.director = director,
+        this.duration = duration,
+        this.genre = genre,
+        this.rate = rate,
+        this.poster = poster
+    }
+}
+
+//tomo los imputs
+const generos = document.getElementById("generos");
+const title = document.getElementById("title");
+const director = document.getElementById("director");
+const year = document.getElementById("year");
+const duration= document.getElementById("duration");
+const rate = document.getElementById("rate");
+const poster = document.getElementById("poster");
+
+function genreValores() {
+
+    const checkboxes = generos.querySelectorAll('input[type="checkbox"]');
+    const valoresSeleccionados = [];
+
+    checkboxes.forEach(function(checkbox) {
+        if (checkbox.checked) {
+            valoresSeleccionados.push(checkbox.value);
+        }
+    });
+    
+    return valoresSeleccionados
+}
+
+function handlerSubmit(event) {
+    event.preventDefault();
+    const generoValue = genreValores()
+
+    if (![title.value, director.value, year.value, duration.value, generoValue, rate.value, poster.value].every(Boolean)|| generoValue.length === 0) {
+        return alert("Faltan llenar campos");
+    }
+    if (rate.value<0 || rate.value>10 ) {
+        return alert("La calificacion debe de estar entre 0 y 10. Verifique los campos e intente nuevamente.");
+    }
+    if (year.value < 1895 || year.value > 2024 ) {
+        return alert("El año debe de estar entre 1895 y 2024. Verifique e intente nuevamente.");
+    }
+
+    const titleValue = title.value;
+    const yearValue = year.value;
+    const directorValue = director.value;
+    const durationValue = duration.value;
+    const genreValue = generoValue
+    const rateValue = rate.value;
+    const PosterValue = poster.value;
 
 
-const genre = [ "Action" , "fantasy", "comedy", "Drama", "Terror", "Adventure", "romance", "sci-fi"]
+    const data = new Movies (titleValue, yearValue, directorValue, durationValue, genreValue, rateValue, PosterValue);
+    
+    axios.post("http://localhost:3000/movies", data)
+    .then((response) => {
+        response.data
+    })
+    .catch((error) => {
+        error.message;
+    });
+
+    return alert("Pelicula enviada!")
+}
 
 
 const botonSubmit = document.getElementById("enviar");
-const botonLimpiar = document.getElementById("limpiarForm");
-const generos = document.getElementById("options");
-    const title = document.getElementById("title");
-    const director = document.getElementById("Director");
-    const year = document.getElementById("year");
-    const duration= document.getElementById("duration");
-    const rate = document.getElementById("rate");
-    const poster = document.getElementById("poster");
-
-
-function renderGeneres(){
-    generos.innerHTML= ""
-    for(const genre of genres){
-        const input= document.createElemet("input")
-        const label= document.createElemet("label")
-
-        input.type="checkbox"
-        input.id= genre
-        input.name = "genre[]"
-        input.value= genre
-
-        label.htmlFor= genre
-        label.textContent= genre
-
-        generos.appendChild(input)
-        generos.appendChild(label)
-    }   
-    return generos
-}
-
-
-function validacionCheckboxes() {
-    
-}
-
-
-
-function handlerSubmit(event) {
-    event.preventDefault()
-
-    if (![title.value, director.value, year.value, duration.value,generos.value,rate.value,poster.value].every(boolean))
-    return alert ("Faltan llenar campos")
-        
-    return alert("Pelicula ennviada")
-}
-
-botonSubmit.addEventListener("click", handlerSubmit())
-handlerSubmit()
+botonSubmit.addEventListener("click", handlerSubmit); 
 
 
 function limpiar() {
@@ -62,47 +82,11 @@ function limpiar() {
     duration.value=""
     rate.value=""
     poster.value=""
-
-
     //faltan limpiar los generos
 }
-botonLimpiar.addEventListener("click", limpiar())
+
+const botonLimpiar = document.getElementById("limpiarForm");
+botonLimpiar.addEventListener("click", limpiar)
 
 
-/* function crearPelis () {
-    const title = document.getElementById("title");
-    const titleValor = title.value;
-
-    const Director = document.getElementById("Director");
-    const DirectorValor = Director.value;
-
-    const year = document.getElementById("year");
-    const yearValor = year.value;
-
-    const duration= document.getElementById("duration");
-    const durationValor = duration.value;
-
-    const generos = document.getElementById("generos");
-    const generosValor = generos.value;
-
-    const rate = document.getElementById("rate");
-    const rateValor = rate.value;
-
-    const poster = document.getElementById("poster");
-    const posterValor = poster.value;
-
-    //validacion 
-
-    const peliculaFormulario = {
-        title : titleValor,
-        Director : DirectorValor,
-        year : yearValor,
-        duration : durationValor,
-        generos : generosValor,
-        rate : rateValor,
-        poster : posterValor
-    }
-    return peliculaFormulario
-}
- */
 
