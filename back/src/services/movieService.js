@@ -1,7 +1,7 @@
-const axios = require("axios")
+/* const axios = require("axios") */
+const Movie = require("../model/Movie")
 
-
-const getPeliculasService = async()=>{
+/* const getPeliculasService = async()=>{
 
     try {
         let arrPelis = []
@@ -13,6 +13,31 @@ const getPeliculasService = async()=>{
     } catch (error) {
         console.log(error);
     }
-}
+} */
 
-module.exports = getPeliculasService
+
+/* module.exports= {
+    getAllPeliculas : async()=>{
+
+        try {
+            const {data} = await axios.get("http://students-api.up.railway.app/movies")
+            return data
+        } catch (error) {
+            throw new Error(error)
+        }
+    }
+    
+} */
+
+module.exports= {
+    getAllPeliculas : async()=>{
+
+        try {
+            const movies = await Movie.find()
+            return movies
+        } catch (error) {
+            throw new Error(error)
+        }
+    }
+    
+}
