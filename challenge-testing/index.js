@@ -9,10 +9,17 @@ class CarritoCompra{
 
     calcularTotal() {
         let precioTotal = 0
-        this.producto.forEach( productos => {
-            precioTotal += productos.precio
-        });
+        for(const producto of this.producto){
+            precioTotal += producto.precio * producto. cantidad 
+        }
         return precioTotal
+    }
+    aplicarDescuento(porcentaje){
+        const subTotal = this.calcularTotal()
+        const descuento = this.calcularTotal() * (porcentaje/100)
+
+        return subTotal - descuento
+
     }
 };
 
