@@ -1,7 +1,6 @@
 const {getAllPeliculas, createMovie} = require("../services/movieService")
 
 const getMoviesControllers = async (req, res)=>{
-
     try {
         const movies =  await getAllPeliculas()
         res.status(200).json(movies)
