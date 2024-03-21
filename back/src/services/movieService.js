@@ -12,7 +12,12 @@ module.exports= {
     },
 
     createMovie: async (movie)=>{
-        const newMovie = await Movie.create(movie)
-        return newMovie
+
+        try {
+            const newMovie = await Movie.create(movie)
+            return newMovie
+        } catch (error) {
+            throw Error(error.message)
+        }
     }
 }
