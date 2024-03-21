@@ -1,4 +1,7 @@
 const axios = require("axios")
+const genreValores = require("./validacion")
+
+
 class Movies {
     constructor(title, year, director, duration, genre, rate, poster) {
         this.title = title,
@@ -12,7 +15,7 @@ class Movies {
 }
 
 //tomo los imputs
-const generos = document.getElementById("generos");
+
 const title = document.getElementById("title");
 const director = document.getElementById("director");
 const year = document.getElementById("year");
@@ -20,19 +23,7 @@ const duration= document.getElementById("duration");
 const rate = document.getElementById("rate");
 const poster = document.getElementById("poster");
 
-function genreValores() {
 
-    const checkboxes = generos.querySelectorAll('input[type="checkbox"]');
-    const valoresSeleccionados = [];
-
-    checkboxes.forEach(function(checkbox) {
-        if (checkbox.checked) {
-            valoresSeleccionados.push(checkbox.value);
-        }
-    });
-    
-    return valoresSeleccionados
-}
 
 function handlerSubmit(event) {
     event.preventDefault();
@@ -61,13 +52,16 @@ function handlerSubmit(event) {
     
     axios.post("http://localhost:3000/movies", data)
     .then((response) => {
-        response.data
+        if(response.status === 201) {
+            alert("Pelicula enviada!")
+        }
     })
     .catch((error) => {
-        error.message;
-    });
+        alert("Hay datos duplicados, verifique e intente nuevamente");
+        console.log(error);
+    })
 
-    return alert("Pelicula enviada!")
+    
 }
 
 
@@ -82,7 +76,7 @@ function limpiar() {
     duration.value=""
     rate.value=""
     poster.value=""
-    //faltan limpiar los generos
+    genre.value=""
 }
 
 const botonLimpiar = document.getElementById("limpiarForm");
